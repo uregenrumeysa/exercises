@@ -116,14 +116,14 @@ public class StationWork
 			
 			if ("e".equals(secim.toLowerCase())) 
 			{
-				rst=stmt.executeQuery(" select id,name,station_id from channel "); 
+				rst=stmt.executeQuery(" select name,station_id,id from channel "); 
 				while(rst.next())
 				{
-					int id=rst.getInt(1);
-					String isim=rst.getString(2);
-					int station_id=rst.getInt(3);
+					int id=rst.getInt(3);
+					String name=rst.getString(1);
+					int station_id=rst.getInt(2);
 					System.out.println(" id " + "  "+  "name"+ "   " + "station_id");
-					System.out.println(String.valueOf(id)+"   "+ isim+"   "+String.valueOf(station_id));
+					System.out.println(String.valueOf(id)+"   "+ name+"   "+String.valueOf(station_id));
 				}
 				
 			}
@@ -131,25 +131,25 @@ public class StationWork
 			
 			else
 			{
-				//PreparedStatement pstmt= con.prepareStatement("select id,name,station_id from channel where station_id = ?");
-				//pstmt.setInt(1, Integer.valueOf(secim));//Eðer e girmediyse rakam girmiþtir. Ýstasyon id oluyor. onu integera çevirdik
-				//rst=pstmt.executeQuery("select * from channel");
-				rst=stmt.executeQuery("select * from channel");
+				PreparedStatement pstmt= con.prepareStatement("select name,station_id,id from channel where station_id = ?");
+				pstmt.setInt(1, Integer.valueOf(secim));//Eðer e girmediyse rakam girmiþtir. Ýstasyon id oluyor. onu integera çevirdik
+				
+				rst=pstmt.executeQuery();
 				while(rst.next())
 				{
 					
-					int id=rst.getInt(1);
-					String isim=rst.getString(2);
-					int station_id=rst.getInt(3);
+					int id=rst.getInt(3);
+					String name=rst.getString(1);
+					int station_id=rst.getInt(2);
+					
 					System.out.println(" id " + "  "+  "name"+ "   " + "station_id");
-					System.out.println(String.valueOf(id)+"   "+ isim+"   "+String.valueOf(station_id));
+					System.out.println(String.valueOf(id)+"   "+ name+"   "+String.valueOf(station_id));
+					break;
 				}
-				System.out.println("kayýt bulunamadý.");
+				
+				
 				
 			}
-			
-			
-
 	
 		}
 		
@@ -230,10 +230,12 @@ public class StationWork
 		try 
 		{
 			
-			//System.out.print("hangi ölçümleri kayýt edeceksiniz(ph,sýcaklýk):");
 			
 			kanalListele();
+			
+			System.out.print("hangisine ölçüm kaydedeceksiniz id no girin:");
 			int channelId =scan.nextInt();
+			
 			System.out.print("Tarih giriniz(??/??/????):");
 			String strDate=scan.next();
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYYY");
