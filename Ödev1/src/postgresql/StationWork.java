@@ -9,7 +9,7 @@ public class StationWork
 	static Connection con;
 	private static Scanner scan;
 	public static void main(String[] args) throws SQLException
-	
+	// deneme zekaþi
 	{
 		try
 		{
