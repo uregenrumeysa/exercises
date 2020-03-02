@@ -4,18 +4,17 @@ public class PostgresConnect {
 	static Connection con;
 	public static Connection connect()
 	{
-		
 		try 
 		{
 			Class.forName("org.postgresql.Driver");
-			con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Ödev1","postgres","1234*");
-			System.out.println("Veritabanýna baðlantý yapýldý");
+			con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Ã–dev1","postgres","1234*");
+			System.out.println("VeritabanÃ½na baÃ°lantÃ½ yapÃ½ldÃ½");
 			
 		}
 		catch(Exception ex) {
 			System.out.println("Hata : " + ex.getMessage());
 		}
-		return null;
+		return con;
 		
 	}
 
