@@ -1,0 +1,1 @@
+/// DBService adında bir class oluştur. Station ekle/ listele/ sil / channel ekle / listele .... gibi tüm methodlar burda olsun. burdan çağır.
