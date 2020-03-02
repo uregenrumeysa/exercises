@@ -12,25 +12,25 @@ public class AnaProgram {
 			Scanner scan=new Scanner(System.in);
 			System.out.print(""
 					+ "*********************\n"
-					+ "1)İstasyonları Listele\n"
-					+ "2)İstasyon Ekle\n"
-					+ "3)İstasyon Sil\n"
-					+ "4)Kanalları Listele\n"
+					+ "1)ÃstasyonlarÃ½ Listele\n"
+					+ "2)Ãstasyon Ekle\n"
+					+ "3)Ãstasyon Sil\n"
+					+ "4)KanallarÃ½ Listele\n"
 					+ "5)Kanal Ekle\n"
 					+ "6)Kanal Sil\n"
-					+ "7)Ölçümleri Listele\n"
-					+ "8)Ölçüm Kaydet\n"
-					+ "9)Ölçüm Sil\n"
-					+ "10)Çıkış\n"
+					+ "7)Ã–lÃ§Ã¼mleri Listele\n"
+					+ "8)Ã–lÃ§Ã¼m Kaydet\n"
+					+ "9)Ã–lÃ§Ã¼m Sil\n"
+					+ "10)Ã‡Ã½kÃ½Ã¾\n"
 					+ "*********************\n ");
-			System.out.print("Seçiminiz:");
+			System.out.print("SeÃ§iminiz:");
 			int secim=scan.nextInt();
-			
+			DBService dbService = new DBService();
 			
 			switch(secim) 
 			{
-			case 1:
-				Station.StationListele();
+			case 1:// BÃ¶yle DB Serviceten Ã§aÄŸrÄ±lacak. 
+				dbService.stationListele();
 				break;
 			case 2:
 				Station.StationEkle();
@@ -43,11 +43,11 @@ public class AnaProgram {
 				
 				
 			}
-			System.out.print("Yapmak istediğiniz başka bir şey var mı?(e/E veya h/H):");
+			System.out.print("Yapmak istediÃ°iniz baÃ¾ka bir Ã¾ey var mÃ½?(e/E veya h/H):");
 			String soru1=scan.next();
 			soru=soru1;
 		}
-		System.out.println("Mutlu günler :)");
+		System.out.println("Mutlu gÃ¼nler :)");
 		
 		
 		
