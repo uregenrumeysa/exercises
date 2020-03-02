@@ -5,20 +5,22 @@ import java.util.Scanner;
 
 import postgresql.PostgresConnect;
 
+
+// bu sÄ±nÄ±d Channel csÄ±nÄ±fÄ± gibi olmalÄ±. 
 public class Station 
 {
     static Scanner scan;
 	int id;
 	String name;
     
-	
+	// bu methodlar DBService classÄ±nda olmalÄ±.
 	public static void StationListele() 
 	{
 		try
 		{
 			
 			Class.forName("org.postgresql.Driver");
-			Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Ödev1","postgres","1234*");
+			Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Ã–dev1","postgres","1234*");
 			Statement stmt=con.createStatement();
 			ResultSet rs=stmt.executeQuery("select * from station");
 			System.out.println(" id "+ "  "+ " name ");
@@ -39,21 +41,21 @@ public class Station
 	public static void StationEkle() 
 	{
 		scan=new Scanner(System.in);
-		System.out.print("İstasyon Numarası(id) Giriniz:");
+		System.out.print("Ãstasyon NumarasÃ½(id) Giriniz:");
 		int stationId=scan.nextInt();
-		System.out.print("İstasyon Adı Giriniz:");
+		System.out.print("Ãstasyon AdÃ½ Giriniz:");
 		String name=scan.next();
 		
 		
 		try 
 		{
 			Class.forName("org.postgresql.Driver");
-			Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Ödev1","postgres","1234*");
+			Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Ã–dev1","postgres","1234*");
 			PreparedStatement pstmt=con.prepareStatement(" insert into station values(?,?)");
 			pstmt.setInt(1, stationId);
 			pstmt.setString(2, name);
 			pstmt.executeUpdate();
-			System.out.println("Kayıt başarıyla tamamlandı.");
+			System.out.println("KayÃ½t baÃ¾arÃ½yla tamamlandÃ½.");
 			
 		}
 		
@@ -69,13 +71,13 @@ public class Station
 	{
 		StationListele();
 		scan=new Scanner(System.in);
-		System.out.print("silinecek id yi yazın:");
+		System.out.print("silinecek id yi yazÃ½n:");
 		int stationId=scan.nextInt();
 		
 		try
 		{
 			Class.forName("org.postgresql.Driver");
-			Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Ödev1","postgres","1234*");
+			Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/Ã–dev1","postgres","1234*");
 			PreparedStatement pstmt=con.prepareStatement("DELETE FROM station  WHERE id = ? ");
 			Statement stmt=con.createStatement();
 			
@@ -92,7 +94,7 @@ public class Station
 				}
 			}
 			
-			System.out.println("Kayıt silindi.");
+			System.out.println("KayÃ½t silindi.");
 		}
 		catch(Exception ex) {
 			System.err.println("Hata :"+ ex);
